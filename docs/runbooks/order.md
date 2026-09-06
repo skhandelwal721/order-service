@@ -6,6 +6,21 @@
 | --- | --- |
 | `POST /v1/orders` | p99 < 2.5s, 99.99% availability |
 
+## Volume
+
+Steady-state figures, for sizing the impact of anything on the discounted path. Taken from the
+checkout dashboard, weekday mean over the last quarter.
+
+| | Typical weekday |
+| --- | --- |
+| orders placed | 52,000 |
+| carrying a coupon | 38% — about 19,760 |
+| mean discounted order value | 249.00 |
+| mean promotion | 10% |
+
+The discounted path is not a minority case. Any defect in it is multiplied by roughly twenty
+thousand orders a day before anyone has finished reading the alert.
+
 ## Alarms
 
 | Alarm | Means |
