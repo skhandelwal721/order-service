@@ -1,0 +1,48 @@
+# Platform descriptor for order-service.
+name: order-service
+description: Storefront order orchestration for Northwind Retail
+organization: northwind-retail
+owner: storefront-platform
+tier: 1
+notifications:
+  email: storefront-platform@northwind.example
+
+compute:
+  instanceType: c6i.2xlarge
+  minInstances: 8
+  maxInstances: 40
+  multiAZ: true
+  healthcheck:
+    path: /healthcheck
+    interval: 10
+
+environmentVariables:
+  COUPON_SERVICE_BASE_URL: http://coupon-service.prod.internal
+
+# Upstream services. coupon-service is hard on the discounted path: we cannot price or release
+# a discounted order without a redemption receipt.
+dependencies:
+  - service: coupon-service
+    criticality: hard
+    reads:
+      - redemption receipt — discount, fundingNetwork, status, chargeId
+
+alarms:
+  - name: OrderErrorRate
+    metric: custom:order.place.5xx.rate
+    comparison: GreaterThanThreshold
+    threshold: 1
+    periods: 2
+    priority: P1
+  - name: OrdersStuckUnreleased
+    metric: custom:order.unreleased.count
+    comparison: GreaterThanThreshold
+    threshold: 50
+    periods: 3
+    priority: P1
+  - name: ReceiptTemplateFallbackRate
+    metric: custom:order.receipt.fallback.rate
+    comparison: GreaterThanThreshold
+    threshold: 5
+    periods: 3
+    priority: P2

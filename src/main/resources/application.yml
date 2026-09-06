@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: order-service
+  jackson:
+    deserialization:
+      # Lenient on purpose. coupon-service ships additive fields regularly and we do not want a
+      # storefront outage every time they do.
+      #
+      # The cost of that choice is written down in docs/dependencies.md and is worth
+      # understanding: we will not notice a field being added, and we will not notice a field
+      # changing meaning either. Nothing throws. The order total is just wrong.
+      fail-on-unknown-properties: false
+
+server:
+  tomcat:
+    threads:
+      max: 300
+
+# --------------------------------------------------------------------------------------
+# coupon-service
+#
+# Hard dependency on the discounted checkout path. An order with a coupon cannot be priced
+# or released without a redemption receipt.
+# --------------------------------------------------------------------------------------
+clients:
+  coupon:
+    baseUrl: ${COUPON_SERVICE_BASE_URL}
+    connectTimeout: 200ms
+    readTimeout: 1200ms
+    redemptionPath: /v1/redemptions
+
+logging:
+  level:
+    com.northwind.order: INFO
