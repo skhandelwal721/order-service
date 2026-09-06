@@ -24,6 +24,13 @@ the producing side.
 change of meaning on `discount`. If the meaning must change, the field must be renamed so that
 we read `null` and fall over instead of being quietly wrong.
 
+Better still, publish `chargedAmount` — the figure the customer was actually charged. Then we
+stop doing the arithmetic at all and there is no basis for us to get wrong. We have asked for
+this twice. **If a `discountBasis` or `chargedAmount` ever appears on the receipt, this service
+must be changed to read it in the same release** — `RedemptionView` is
+`@JsonIgnoreProperties(ignoreUnknown = true)`, so new fields arrive and are discarded without
+anyone noticing.
+
 ## 2. `fundingNetwork` is a card network name
 
 **Where:** `ReceiptTemplateSelector.templateFor` via `FundingNetwork.parseOrNull`.
