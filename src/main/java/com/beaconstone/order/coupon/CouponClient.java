@@ -1,4 +1,4 @@
-package com.northwind.order.coupon;
+package com.beaconstone.order.coupon;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

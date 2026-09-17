@@ -1,4 +1,4 @@
-package com.northwind.order.coupon;
+package com.beaconstone.order.coupon;
 
 /**
  * The card network that funded a promotion, as reported by coupon-service.

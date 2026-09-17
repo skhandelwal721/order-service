@@ -1,4 +1,4 @@
-package com.northwind.order.coupon;
+package com.beaconstone.order.coupon;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

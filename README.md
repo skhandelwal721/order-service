@@ -1,6 +1,6 @@
 # order-service
 
-Storefront order orchestration for Northwind Retail. Tier 1 — this is the checkout button.
+Storefront order orchestration for Beacon Stone Retail. Tier 1 — this is the checkout button.
 
 ## Responsibilities
 
@@ -30,16 +30,16 @@ What we read from the redemption receipt, and where:
 
 | We read | We use it for | Breaks if |
 | --- | --- | --- |
-| `discount` | subtracting from the order subtotal as an **absolute currency amount** — [`OrderTotalCalculator`](src/main/java/com/northwind/order/pricing/OrderTotalCalculator.java) | it ever carries anything other than an absolute amount |
-| `fundingNetwork` | picking the receipt template, since network-funded promotions carry scheme branding requirements — [`ReceiptTemplateSelector`](src/main/java/com/northwind/order/receipt/ReceiptTemplateSelector.java) | the field is renamed or its values change |
-| `status` | releasing the order only when the money is in — [`ReleaseGate`](src/main/java/com/northwind/order/fulfilment/ReleaseGate.java) | a new status value is introduced |
+| `discount` | subtracting from the order subtotal as an **absolute currency amount** — [`OrderTotalCalculator`](src/main/java/com/beaconstone/order/pricing/OrderTotalCalculator.java) | it ever carries anything other than an absolute amount |
+| `fundingNetwork` | picking the receipt template, since network-funded promotions carry scheme branding requirements — [`ReceiptTemplateSelector`](src/main/java/com/beaconstone/order/receipt/ReceiptTemplateSelector.java) | the field is renamed or its values change |
+| `status` | releasing the order only when the money is in — [`ReleaseGate`](src/main/java/com/beaconstone/order/fulfilment/ReleaseGate.java) | a new status value is introduced |
 
 See [`docs/dependencies.md`](docs/dependencies.md).
 
 ## Why this service fails *open*, and what that costs
 
 `coupon-service` chose to fail closed: it holds a redemption it cannot reconcile. We chose the
-opposite. [`RedemptionView`](src/main/java/com/northwind/order/coupon/RedemptionView.java) is
+opposite. [`RedemptionView`](src/main/java/com/beaconstone/order/coupon/RedemptionView.java) is
 lenient, the receipt selector falls back, and the total calculator does no sanity check.
 
 That keeps checkout up when `coupon-service` ships an additive change. It also means **none of

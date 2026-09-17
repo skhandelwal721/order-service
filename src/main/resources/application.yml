@@ -31,4 +31,4 @@ clients:
 
 logging:
   level:
-    com.northwind.order: INFO
+    com.beaconstone.order: INFO

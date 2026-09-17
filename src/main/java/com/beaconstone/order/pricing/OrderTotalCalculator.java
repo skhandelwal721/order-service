@@ -1,6 +1,6 @@
-package com.northwind.order.pricing;
+package com.beaconstone.order.pricing;
 
-import com.northwind.order.coupon.RedemptionView;
+import com.beaconstone.order.coupon.RedemptionView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

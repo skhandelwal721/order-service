@@ -1,10 +1,10 @@
-package com.northwind.order.order;
+package com.beaconstone.order.order;
 
-import com.northwind.order.coupon.CouponClient;
-import com.northwind.order.coupon.RedemptionView;
-import com.northwind.order.fulfilment.ReleaseGate;
-import com.northwind.order.pricing.OrderTotalCalculator;
-import com.northwind.order.receipt.ReceiptTemplateSelector;
+import com.beaconstone.order.coupon.CouponClient;
+import com.beaconstone.order.coupon.RedemptionView;
+import com.beaconstone.order.fulfilment.ReleaseGate;
+import com.beaconstone.order.pricing.OrderTotalCalculator;
+import com.beaconstone.order.receipt.ReceiptTemplateSelector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

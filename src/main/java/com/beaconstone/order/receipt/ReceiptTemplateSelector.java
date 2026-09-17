@@ -1,7 +1,7 @@
-package com.northwind.order.receipt;
+package com.beaconstone.order.receipt;
 
-import com.northwind.order.coupon.FundingNetwork;
-import com.northwind.order.coupon.RedemptionView;
+import com.beaconstone.order.coupon.FundingNetwork;
+import com.beaconstone.order.coupon.RedemptionView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

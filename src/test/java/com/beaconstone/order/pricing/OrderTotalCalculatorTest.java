@@ -1,6 +1,6 @@
-package com.northwind.order.pricing;
+package com.beaconstone.order.pricing;
 
-import com.northwind.order.coupon.RedemptionView;
+import com.beaconstone.order.coupon.RedemptionView;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

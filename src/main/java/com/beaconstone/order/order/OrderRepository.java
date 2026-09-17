@@ -1,4 +1,4 @@
-package com.northwind.order.order;
+package com.beaconstone.order.order;
 
 import org.springframework.stereotype.Repository;
 

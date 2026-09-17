@@ -1,11 +1,11 @@
 # Platform descriptor for order-service.
 name: order-service
-description: Storefront order orchestration for Northwind Retail
-organization: northwind-retail
+description: Storefront order orchestration for Beacon Stone Retail
+organization: beacon-stone-retail
 owner: storefront-platform
 tier: 1
 notifications:
-  email: storefront-platform@northwind.example
+  email: storefront-platform@beaconstone.example
 
 compute:
   instanceType: c6i.2xlarge
